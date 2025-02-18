@@ -70,7 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting you-should-use fzf zsh-bat)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -107,3 +107,5 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 [[ -s "/home/ahmadreza/.gvm/scripts/gvm" ]] && source "/home/ahmadreza/.gvm/scripts/gvm"
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export CHEATCOLORS=true
+function cht() { curl -s cheat.sh/$1 | less -R; }
