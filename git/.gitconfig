@@ -1,8 +1,5 @@
 [url "git@gitlab.com:"] insteadOf = https://gitlab.com
-[user]
-	email = ahmadreza.marashi@momox.biz
-	name = ahmadreza.marashi
+[url "git@github.com:"] insteadOf = https://github.com
+
 [core]
 	editor = vim
-[url "ssh://git@gitlab.bof.int.momox.biz"]
-	insteadOf = https://gitlab.bof.int.momox.biz

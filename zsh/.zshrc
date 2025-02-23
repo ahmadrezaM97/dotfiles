@@ -8,7 +8,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
+
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -70,7 +71,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fzf gitzsh-syntax-highlightin zsh-autosuggestion)
+plugins=(git fzf git zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -102,3 +103,34 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+function twoscr() {
+  xrandr --output eDP-1 --primary --mode 1920x1200 --pos 0x0 --rotate normal \
+         --output HDMI-1 --off \
+         --output DP-1 --off \
+         --output HDMI-2 --off \
+         --output DP-2 --off \
+         --output HDMI-3 --off \
+         --output DP-3 --off \
+         --output DP-4 --off
+}
+function set_volume() {
+  if [[ -z "$1" ]]; then
+    echo "Usage: set_volume <percentage>"
+    return 1
+  fi
+
+  # Remove a trailing "%" if provided
+  local volume="${1%\%}"
+  
+  # Check if the input is a valid number
+  if ! [[ "$volume" =~ ^[0-9]+$ ]]; then
+    echo "Error: Please provide a numeric percentage value."
+    return 1
+  fi
+
+  pactl set-sink-volume @DEFAULT_SINK@ "${volume}%"
+}
+
+func setting(){
+env XDG_CURRENT_DESKTOP=GNOME DESKTOP_SESSION=gnome gnome-control-center
+}
