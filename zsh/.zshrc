@@ -103,34 +103,12 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-function twoscr() {
-  xrandr --output eDP-1 --primary --mode 1920x1200 --pos 0x0 --rotate normal \
-         --output HDMI-1 --off \
-         --output DP-1 --off \
-         --output HDMI-2 --off \
-         --output DP-2 --off \
-         --output HDMI-3 --off \
-         --output DP-3 --off \
-         --output DP-4 --off
-}
-function set_volume() {
-  if [[ -z "$1" ]]; then
-    echo "Usage: set_volume <percentage>"
-    return 1
-  fi
 
-  # Remove a trailing "%" if provided
-  local volume="${1%\%}"
-  
-  # Check if the input is a valid number
-  if ! [[ "$volume" =~ ^[0-9]+$ ]]; then
-    echo "Error: Please provide a numeric percentage value."
-    return 1
-  fi
 
-  pactl set-sink-volume @DEFAULT_SINK@ "${volume}%"
-}
 
-func setting(){
-env XDG_CURRENT_DESKTOP=GNOME DESKTOP_SESSION=gnome gnome-control-center
-}
+# Determine the OS and source the corresponding file
+if [[ "$(uname)" == "Darwin" ]]; then
+  source "$HOME/.zshrc_mac"
+elif [[ "$(uname)" == "Linux" ]]; then
+  source "$HOME/.zshrc_linux"
+fi

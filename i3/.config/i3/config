@@ -247,5 +247,4 @@ exec_always killall polybar
 exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
 bindsym Mod1+space exec ~/.config/polybar/toggle_layout.sh
 bindsym Mod1+l exec --no-startup-id i3lock -i ~/Documents/background/wall.png
-
 exec --no-startup-id xrandr --output eDP-1 --primary --mode 1920x1200 --pos 0x0 --rotate normal --output HDMI-1 --off --output DP-1 --off --output HDMI-2 --off --output DP-2 --off --output HDMI-3 --off --output DP-3 --off --output DP-4 --off
